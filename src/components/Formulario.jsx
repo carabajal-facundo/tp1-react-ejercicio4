@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import ListadoTareas from './ListadoTareas';
 import { useState } from 'react';
@@ -7,17 +6,19 @@ const Formulario = () => {
     const [tarea, setTarea] = useState('');
     const [tareas, setTareas] = useState([]);
 
-    const handleSubmit = ()=>{
-        e.prevendDefault();
+    const handleSubmit = (e)=>{
+        e.preventDefault();
         setTareas([...tareas, tarea]);
         setTarea('');
     }
 
     return (
         <>
-        <Form className='d-flex'>
-            <Form.Control type='text' placeholder='Ingrese aqui la tarea' onChange={ (e)=>setTarea(e.target.value) }/>
-            <Button variant='success'>Ingresar</Button>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3 d-flex" controlId="tarea">
+                <Form.Control type='text' placeholder='Ingrese aqui la tarea' onChange={ (e)=>setTarea(e.target.value) } value={tarea}/>
+                <Button variant='success' type='submit'>Ingresar</Button>
+            </Form.Group>
         </Form>
         <ListadoTareas tareas={tareas}></ListadoTareas>
         </>

@@ -19,7 +19,7 @@ const Formulario = () => {
             <Form.Control type='text' placeholder='Ingrese aqui la tarea' onChange={ (e)=>setTarea(e.target.value) }/>
             <Button variant='success'>Ingresar</Button>
         </Form>
-        <ListadoTareas tareas={tareas} tarea={tarea}></ListadoTareas>
+        <ListadoTareas tareas={tareas}></ListadoTareas>
         </>
     );
 };
